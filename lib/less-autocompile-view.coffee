@@ -1,4 +1,5 @@
 {View, $, $$} = require 'atom'
+{Function} = require 'loophole'
 
 module.exports =
 class LessAutocompileView extends View
@@ -145,6 +146,9 @@ class LessAutocompileView extends View
         parser.parse data.toString(), (error, tree) =>
           @addMessagePanel 'icon-file-text', 'info', filePath
 
+          oldFunc = global.Function
+          global.Function = Function
+
           try
             if error
               @inProgress = false
@@ -162,6 +166,8 @@ class LessAutocompileView extends View
           catch e
             @inProgress = false
             @addMessagePanel '', 'error', "#{e.message} - index: #{e.index}, line: #{e.line}, file: #{e.filename}"
+
+          global.Function = oldFunc
 
           @hidePanel()
 
