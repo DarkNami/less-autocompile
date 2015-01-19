@@ -11,6 +11,6 @@
   "dependencies": {
     "less": "1.7.0",
     "mkdirp": "latest",
-	"loophole": "1.0.0"
+    "loophole": "1.0.0"
   }
 }

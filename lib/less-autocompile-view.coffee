@@ -19,9 +19,10 @@ class LessAutocompileView extends View
     @panelBody = @find('.panel-body')
     @panelLoading = @find('.loading')
 
-    atom.workspaceView.on 'core:save', (e) =>
-      if !@inProgress
-        @compile atom.workspace.activePaneItem
+    atom.commands.add 'atom-workspace',
+      'core:save': (e) =>
+        if !@inProgress
+          @compile atom.workspace.activePaneItem
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->
@@ -116,7 +117,7 @@ class LessAutocompileView extends View
     @panelBody.addClass('hide').empty()
     @panelLoading.removeClass 'hide'
 
-    atom.workspaceView.prependToBottom this
+    atom.workspace.addBottomPanel item: this
 
     @removeClass 'hide'
 
