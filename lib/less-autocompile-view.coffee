@@ -22,7 +22,7 @@ class LessAutocompileView extends View
     atom.commands.add 'atom-workspace',
       'core:save': (e) =>
         if !@inProgress
-          @compile atom.workspace.activePaneItem
+          @compile atom.workspace.getActivePaneItem()
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->
@@ -34,7 +34,7 @@ class LessAutocompileView extends View
   compile: (editor) ->
     path = require 'path'
 
-    filePath = editor.getUri()
+    filePath = editor.getURI()
     fileExt = path.extname filePath
 
     if fileExt == '.less'
