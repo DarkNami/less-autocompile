@@ -12,6 +12,6 @@
     "less": "1.7.5",
     "mkdirp": "latest",
     "loophole": "1.0.0",
-	"atom-space-pen-views": "^2.0.3"
+    "atom-space-pen-views": "^2.0.3"
   }
 }
